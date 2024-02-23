@@ -25,7 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/kategori/tambah', [KategoriController::class,'create'])->name('kategori.create');
     Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-
+    Route::delete('/kategori/hapus/{id}', [KategoriController::class, 'hapus'])->name('kategori.hapus');
+    Route::post('/kategori/update/{id}',[KategoriController::class, 'update'])->name('kategori.update');
+    Route::get('/kategori/edit/{id}',[KategoriController::class, 'edit'])->name('kategori.edit');
     Route::get('/buku', [BukuController::class, 'index'])->name('buku.index');
     Route::get('/buku/tambah', [BukuController::class, 'create'])->name('buku.create');
     Route::post('/buku/store', [BukuController::class, 'store'])->name('buku.store');
@@ -35,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/peminjaman/selesai/{id}', [PeminjamanController::class, 'kembalikanBuku'])->name('peminjaman.kembalikan');
     Route::post('/buku/store', [BukuController::class, 'store'])->name('buku.store');
     Route::delete('/buku/hapus/{id}', [BukuController::class, 'hapus'])->name('buku.hapus');
+    Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku.edit');
+    Route::patch('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
+    Route::get('/report', [PeminjamanController::class, 'print'])->name('print');
+
 });
 
 Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');

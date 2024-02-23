@@ -23,4 +23,10 @@ class KategoriController extends Controller
         ]);
         return redirect ('/kategori')->with('succes', 'Kategori berhasil ditambahkan!');
     }
+    public function hapus($id)
+    {
+    $kategori = Kategori::find($id);
+    $kategori->delete();
+    return redirect('/kategori');
+    }
 }

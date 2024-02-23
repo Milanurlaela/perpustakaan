@@ -18,7 +18,7 @@
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2">Nama Kategori</th>
-                                        <th class="px-4 py-2">Aksi</th>
+                                    <th class="px-4 py-2"> Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,7 +26,16 @@
                                     <tr>
                                         <td class="px-4 py-2">{{ $k->nama_kategori }}</td>
                                         <td>
-
+                                        <form action="{{route('kategori.hapus', $k->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i> Hapus
+                                    </button>
+                                    <a href="{{ route('kategori.edit', $k->id) }}" class="btn btn-primary">
+                                                Edit
+                                            </a>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
