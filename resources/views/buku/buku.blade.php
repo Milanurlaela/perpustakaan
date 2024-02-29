@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         <div class="mb-4">
-                            <a href="{{ route ('buku.create') }}" class="btn btn-primary">
+                            <a href="{{ route('buku.create') }}" class="btn btn-primary">
                                 + Tambah Data Buku
                             </a>
                         </div>
@@ -17,8 +17,8 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    
-                                    <th>Judul Buku</th>
+                                    <th>Foto</th>
+                                    <th>Judul</th>
                                     <th>Penulis</th>
                                     <th>Penerbit</th>
                                     <th>Tahun Terbit</th>
@@ -28,22 +28,23 @@
                             <tbody>
                                 @forelse ($buku as $b)
                                     <tr>
-                                        
+                                        <td>
+                                            <img src="{{ asset('storage/' . $b->foto) }}" alt="Foto Buku" width="100">
+                                        </td>
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
                                         <td>{{ $b->tahun_terbit }}</td>
-                                    <td>
-                                    <form action="{{route('buku.hapus', $b->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                    </button>
-                                    
-                                    <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">
-                                    <i class="fa fa-pen"></i> Edit
-                                    </a>
+                                        <td>
+                                            <form action="{{ route('buku.hapus', $b->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">
+                                                <i class="fa fa-pen"></i> Edit
+                                            </a>
                                         </td>
                                     </tr>
                                 @empty

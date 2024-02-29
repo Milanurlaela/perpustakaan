@@ -15,7 +15,8 @@ class Buku extends Model
         'judul',
         'penulis',
         'penerbit',
-        'tahun_terbit'
+        'tahun_terbit',
+        'foto'
     ];
 
     public function kategoribukurelasi()
