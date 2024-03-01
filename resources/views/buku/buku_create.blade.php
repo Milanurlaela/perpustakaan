@@ -24,7 +24,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="foto" class="block text-sm font-medium text-gray-700">Foto Buku:</label>
+                                <label for="foto" class="block text-sm font-medium text-gray-700">Foto Bukuu:</label>
                                 <input type="file" name="foto" accept="image/*" class="mt-1 p-2 border border-gray-3000 rounded-md" required>
                             </div>
 
