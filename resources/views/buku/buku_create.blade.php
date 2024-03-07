@@ -37,6 +37,10 @@
                                 <label for="penerbit" class="form-label">Penerbit:</label>
                                 <input type="text" name="penerbit" class="form-control" required>
                             </div>
+                            <div class="mb-4">
+                                <label for="sinopsis" class="form-label">Sinopsis:</label>
+                                <input type="text" name="sinopsis" class="form-control" required>
+                            </div>
 
                             <div class="mb-4">
                                 <label for="tahun_terbit" class="form-label">Tahun Terbit:</label>

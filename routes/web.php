@@ -23,7 +23,7 @@ Route::get('/', [BukuController::class, 'welcome']);
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','role:admin')->group(function () {
     //kategori
     Route::get('/kategori/tambah', [KategoriController::class,'create'])->name('kategori.create');
     Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/peminjaman/tambah', [PeminjamanController::class, 'tambahPeminjaman'])->name('peminjaman.tambah');
     Route::post('/peminjaman/store', [PeminjamanController::class, 'storePeminjaman'])->name('peminjaman.store');
     Route::post('/peminjaman/selesai/{id}', [PeminjamanController::class, 'kembalikanBuku'])->name('peminjaman.kembalikan');
+    Route::get('/user/peminjaman', [PeminjamanController::class, 'userPeminjaman'])->name('peminjaman.user');
     //generate report
     Route::get('/report', [PeminjamanController::class, 'print'])->name('print');
 

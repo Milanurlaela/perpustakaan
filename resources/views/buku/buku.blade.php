@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="mb-4">
                             <a href="{{ route('buku.create') }}" class="btn btn-primary">
-                                + Tambah Data Buku
+                                + Tambah Data Bukuu
                             </a>
                         </div>
 
@@ -21,6 +21,7 @@
                                     <th>Judul</th>
                                     <th>Penulis</th>
                                     <th>Penerbit</th>
+                                    <th>Sinopsis</th>
                                     <th>Tahun Terbit</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -34,6 +35,7 @@
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
+                                        <td>{{ $b->sinopsis}}</td>
                                         <td>{{ $b->tahun_terbit }}</td>
                                         <td>
                                             <form action="{{ route('buku.hapus', $b->id) }}" method="post">
@@ -42,8 +44,16 @@
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                            </form>
+                                            <a class="btn btn-info" href="{{ route('buku.edit', $b->id) }}">Edit</a> 
+=======
+=======
+>>>>>>> parent of 9ccf70f (perubahan)
                                             <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">
                                                 <i class="fa fa-pen"></i> Edit
+>>>>>>> parent of 9ccf70f (perubahan)
                                             </a>
                                         </td>
                                     </tr>
