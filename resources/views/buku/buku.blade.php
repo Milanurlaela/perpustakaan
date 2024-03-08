@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="mb-4">
                             <a href="{{ route('buku.create') }}" class="btn btn-primary">
-                                + Tambah Data Bukuu
+                                + Tambah Data Bukuuu
                             </a>
                         </div>
 
