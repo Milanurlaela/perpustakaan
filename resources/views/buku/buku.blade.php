@@ -44,16 +44,16 @@
                                                 <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
                                             </form>
                                             <a class="btn btn-info" href="{{ route('buku.edit', $b->id) }}">Edit</a> 
-=======
-=======
->>>>>>> parent of 9ccf70f (perubahan)
-                                            <a class="btn btn-primary" href="{{ route('buku.edit', $b->id) }}">
-                                                <i class="fa fa-pen"></i> Edit
->>>>>>> parent of 9ccf70f (perubahan)
+
+
+
+                                            
+                                            
+
                                             </a>
                                         </td>
                                     </tr>

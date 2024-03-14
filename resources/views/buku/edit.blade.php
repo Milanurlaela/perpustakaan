@@ -24,9 +24,22 @@
                                 <label for="tahun_terbit" class="form-label">Tahun Terbit:</label>
                                 <input type="number" name="tahun_terbit" value="{{$buku->tahun_terbit}}" class="form-control" required>
                             </div>
-
-
-                           
+                            <div class="mb-4">
+                                <label for="foto" class="form-label">Foto Buku:</label>
+                                <input type="file" name="foto" accept="image/*" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="kategori_id" class="form-label">Kategori:</label>
+                                <select name="kategori_id" class="form-select custom-select" required>
+                                    @foreach($kategori as $k)
+                                        <option value="{{ $k->id }}" {{ $buku->kategori->contains('id', $k->id) ? 'selected' : '' }}>{{ $k->nama_kategori }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sinopsis" class="form-label">Sinopsis:</label>
+                                <input type="text" name="sinopsis" class="form-control" value="{{ $buku->sinopsis }}" required>
+                            </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>

@@ -5,7 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +49,6 @@ Route::middleware('auth','role:admin')->group(function () {
     Route::get('/report', [PeminjamanController::class, 'print'])->name('print');
 
 });
-
+Route::get('buku/detail/{id}', [BukuController::class, 'show'])->name('buku.show');
 Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
