@@ -8,7 +8,7 @@
                 $totalPeminjam = \App\Models\Peminjaman::count();
                 $totalUser = \App\Models\User::count();
             @endphp -->
-@role('admin')
+    @role('admin')
         <div class="row">
             <div class="col-xl-4 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100">

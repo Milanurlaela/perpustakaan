@@ -6,6 +6,7 @@ use App\Models\Buku;
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use App\Models\User;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
@@ -41,16 +42,28 @@ class PeminjamanController extends Controller
         ]);
         return redirect('/peminjaman');
     }
-    public function kembalikanBuku($id)
+   public function kembalikanBuku($id)
     {
         $peminjaman = Peminjaman::findOrFail($id);
-        $peminjaman->tanggal_pengembalian = now();
-        $peminjaman->status = 'Dikembalikan';
+        $peminjaman->tanggal_sekarang = now();
+ 
+        // Menghitung selisih hari antara tanggal seharusnya dikembalikan dan tanggal pengembalian
+        $tanggal_seharusnya_dikembalikan = strtotime($peminjaman->tanggal_pengembalian);
+        $tanggal_kembali = strtotime(date('Y-m-d H:i:s'));
+        $selisih_hari = ($tanggal_kembali - $tanggal_seharusnya_dikembalikan) / (60 * 60 * 24);
+ 
+        if ($selisih_hari > 0) {
+            // Jika terlambat, status menjadi 'Denda'
+            $peminjaman->status = 'Denda';
+        } else {
+            // Jika tidak, statusnya 'Dikembalikan'
+            $peminjaman->status = 'Dikembalikan';
+        }
+ 
         $peminjaman->save();
-
+ 
         return redirect()->route('peminjaman.index')->with('success', 'Buku berhasil dikembalikan');
     }
-
     public function userPeminjaman()
     {
         $userId = Auth::id();
@@ -60,5 +73,28 @@ class PeminjamanController extends Controller
             ->get();
 
         return view('peminjaman.user_index', compact('peminjaman'));
+    }
+    public function print()
+    {
+        $user = User::all();
+        $buku = Buku::all();
+        $peminjaman = Peminjaman::all();
+        $data = [
+            'user' => $user,
+            'buku' => $buku,
+            'peminjaman' => $peminjaman,
+        ];
+        $pdf = PDF::loadView('format', $data)
+            ->setPaper('a4');
+        return $pdf->download('Laporan.pdf');
+    }
+
+    public function bayarDenda($id){
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->status = 'Dikembalikan';
+        $peminjaman->tanggal_sekarang = now();
+        $peminjaman->save();
+
+        return redirect()->route('peminjaman.index')->with('success', 'Denda berhasil dibayar');
     }
 }

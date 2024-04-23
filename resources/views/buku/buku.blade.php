@@ -13,7 +13,7 @@
                                 + Tambah Data Bukuuu
                             </a>
                         </div>
-
+                        <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -21,7 +21,7 @@
                                     <th>Judul</th>
                                     <th>Penulis</th>
                                     <th>Penerbit</th>
-                                    <th>Sinopsis</th>
+                                  
                                     <th>Tahun Terbit</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -35,7 +35,7 @@
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
-                                        <td>{{ $b->sinopsis}}</td>
+                                      
                                         <td>{{ $b->tahun_terbit }}</td>
                                         <td>
                                             <form action="{{ route('buku.hapus', $b->id) }}" method="post">

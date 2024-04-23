@@ -11,8 +11,6 @@
                                 + Tambah Data Kategori
                             </a>
                         </div>
-                    </div>
-
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
@@ -30,10 +28,11 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash"></i> Hapus
+                                    <i class="fa fa-trash"></i> Hapus 
                                     </button>
                                     <a href="{{ route('kategori.edit', $k->id) }}" class="btn btn-primary">
                                                 Edit
+                                    </form>
                                             </a>
                                         </td>
                                     </tr>

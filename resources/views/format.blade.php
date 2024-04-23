@@ -48,6 +48,8 @@
             
                 <th>Nama Peminjam</th>
                 <th>Buku yang Dipinjam</th>
+                <th>Tanggal Peminjaman</th>
+                <th>Tanggal Pengembalian</th>
 
             </tr>
         </thead>
@@ -56,6 +58,8 @@
             <tr>
                 <td>{{ $p->user->name }}</td>
                 <td>{{ $p->buku->judul }}</td>
+                <td>{{ Carbon\Carbon::parse($p->tanggal_peminjaman)->format('d/M/Y')}}</td>
+                <td>{{ Carbon\Carbon::parse($p->tanggal_pengembalian)->format('d/M/Y')}}</td>
 
             </tr>
             @endforeach
